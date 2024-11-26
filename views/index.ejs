@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dynamic Items</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <aside class="sidebar">
+        <div class="quantity-section">
+          <label for="quantity">Quantity</label>
+          <input
+            type="number"
+            id="quantity"
+            min="0"
+            max="10000"
+            placeholder="Type here"
+          />
+        </div>
+        <div class="obj1">OBJ1</div>
+      </aside>
+      <main class="main">
+        <div id="items" class="items-container"></div>
+        <div class="obj3">OBJ3</div>
+      </main>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const quantityInput = document.getElementById("quantity");
+        const itemsContainer = document.getElementById("items");
+
+        quantityInput.addEventListener("input", () => {
+          const quantity = parseInt(quantityInput.value) || 0;
+          itemsContainer.innerHTML = "";
+
+          for (let i = 1; i <= quantity; i++) {
+            const item = document.createElement("div");
+            item.className = "item";
+            item.innerHTML = `<div class="item-number">${i}</div>`;
+            itemsContainer.appendChild(item);
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
